@@ -1,17 +1,19 @@
+// starter events
 window.onload = function() {
-     var board = document.getElementById("board");
-     var state = ["", "", "", "", "", "", "", "", ""];
+    // Game utility variables
+     var board = document.getElementById("board");// get main board
+     var state = ["", "", "", "", "", "", "", "", ""];// keeps track of the current game's state
      var btn = document.getElementsByClassName("btn")[0];
-     var children = board.children;
+     var squares= board.children;// get squares in boards
      var raisee = true;
      
 
     
-     for (let i = 0; i < children.length; i++){
-        children[i].classList.add("square");
-        children[i].onclick = function () {click(children[i], i)};
-        children[i].onmouseover = function () {OnMouse(children[i])};
-        children[i].onmouseout = function () {OnMouse(children[i])};
+     for (let i = 0; i < squares.length; i++){
+        squares[i].classList.add("square");
+        squares[i].onclick = function () {click(squares[i], i)};// add event listener for making plays (clicks)
+        squares[i].onmouseover = function () {OnMouse(squares[i])};
+        squares[i].onmouseout = function () {OnMouse(squares[i])};
     }
 
     btn.onclick = function () {
@@ -29,8 +31,8 @@ window.onload = function() {
                if(WinnerX()) {
                    document.getElementById("status").innerHTML = "Congratulations! X is the Winner!";
                    document.getElementById("status").classList.add("you-won");
-                   for (let i = 0; i < children.length; i++){
-                       children[i].onclick = function () {};
+                   for (let i = 0; i < squares.length; i++){
+                       squares[i].onclick = function () {};
                    }
                }
             } else if(raisee == false) {
@@ -41,8 +43,8 @@ window.onload = function() {
                if(WinnerO()) {
                    document.getElementById("status").innerHTML = "Congratulations! O is the Winner!";
                    document.getElementById("status").classList.add("you-won");
-                   for (let i = 0; i < children.length; i++){
-                       children[i].onclick = function () {};
+                   for (let i = 0; i < squares.length; i++){
+                       squares[i].onclick = function () {};
                    }
                }
             } 
@@ -106,12 +108,12 @@ window.onload = function() {
 
    function Restart() {
 
-       for (let i = 0; i < children.length; i++) {
-           children[i].innerHTML = "";
-           children[i].classList.remove("X");
-           children[i].classList.remove("O");
-           children[i].onclick = function () {
-               click(children[i], i)
+       for (let i = 0; i < squares.length; i++) {
+           squares[i].innerHTML = "";
+           squares[i].classList.remove("X");
+           squares[i].classList.remove("O");
+           squares[i].onclick = function () {
+               click(squares[i], i)
             };
            state[i] = "";
        }
