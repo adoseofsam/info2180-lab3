@@ -1,5 +1,5 @@
 // starter events
-window.onload = function() {
+window.onload = function(){
     // Game utility variables
      var board = document.getElementById("board");// get main board
      var btn = document.getElementsByClassName("btn")[0];
